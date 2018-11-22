@@ -1,0 +1,23 @@
+h1 Import File Summary: #{@import_file.name}
+- @counts.each do |k, v|
+  h3 #{v} #{k.titleize.pluralize}
+
+table.ui.celled.table
+  thead 
+    tr 
+      th First Name 
+      th Last Name 
+      th Email
+      th Team 
+      th YOG
+      th Type
+  tbody 
+    - @import_file.people.each do |p| 
+      tr 
+        td #{p.first_name}
+        td #{p.last_name}
+        td #{p.email_address}
+        td #{p.team}
+        td #{p.yog}
+        td #{PeopleImportFile.find_by(import_file_id: @import_file.id, person_id: p.id).add_update.titleize}
+      

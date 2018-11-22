@@ -1,0 +1,42 @@
+h1 Summit Email Tool
+.ui.centered.grid
+  .five.wide.column
+    h3 Current Messages
+    = link_to "Add New", new_email_path, class: "ui positive basic button"
+    .ui.relaxed.divided.list
+      - @emails.each do |email|
+        .item 
+          i.large.mail.icon
+          .content 
+            = link_to email.name, edit_email_path(email), class: "header"
+            .description 
+              | Created #{email.created_at.strftime("%m-%d-%Y")}
+              
+
+  .five.wide.column
+    h3 People Importer 
+    = link_to "Import New Set", new_import_file_path, class: "ui positive basic button"
+    .ui.relaxed.divided.list
+      - @import_files.each do |import_file|
+        .item 
+          i.large.mail.icon
+          .content 
+            = link_to import_file.name, import_file_path(import_file), class: "header"
+            .description 
+              | #{import_file.people.count} people imported on #{import_file.created_at.strftime("%m-%d-%Y")} 
+
+
+  .five.wide.column
+    h3 Queue Messages 
+    = link_to "Queue New Email", setup_queue_path, class: "ui positive basic button"
+    .ui.relaxed.divided.list
+      - @people_emails.each do |people_email|
+        .item 
+          i.large.mail.icon
+          .content 
+            .header Sent #{link_to people_email.email.name, edit_email_path(people_email.email)}
+            .description 
+              | to #{people_email.person.email_address} on #{people_email.created_at.strftime("%m-%d-%Y")} 
+
+
+  

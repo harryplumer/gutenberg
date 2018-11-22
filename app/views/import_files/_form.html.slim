@@ -1,0 +1,18 @@
+.ui-container 
+  h1.ui-header New Import File
+  p Please ensure that the file you are uploading is in CSV format and includes the following fields
+  ul 
+    li First and last name OR full name (space separated)
+    li Email
+  p The following fields are optional but will be blank if user is sent an email that includes this variable.
+  ul 
+    li Team
+    li Grad Year 
+  = form_for @import_file do |f|
+    .ui.form 
+      = f.label :name 
+      = f.text_field :name, required: true 
+      = f.label :file 
+      = f.file_field :doc
+      
+      = f.submit 

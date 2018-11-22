@@ -1,0 +1,16 @@
+.ui-container 
+  h1.ui-header 
+    = @email.id.present? ? "Edit Message" : "Add Message"
+  = form_for @email do |f|
+    .ui.form 
+      = f.label :name 
+      = f.text_field :name, required: true 
+      = f.label :subject 
+      = f.text_field :subject, required: true
+      = f.label :message 
+      = f.text_area :message, id: "message_area"
+      .ui.segment
+        h5 Variables (click to add to message) 
+        - Person.column_names.reject{|k| ["id", "created_at", "updated_at"].include?(k.to_s)}.each do |k|
+          a.ui.blue.basic.button.click-to-add = "#{k.to_s.titleize}"
+      = f.submit 

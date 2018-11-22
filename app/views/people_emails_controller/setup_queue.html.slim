@@ -1,0 +1,19 @@
+= form_tag(queue_messages_path, method: :post)
+  .ui.centered.grid
+    .four.wide.column
+      .ui.segment 
+        h2 Choose A List
+        = select_tag("import_file", options_from_collection_for_select(@import_files, "id", "name"), class: "ui dropdown", id: "import_file_select")
+        #list_area
+
+    .eight.wide.column
+      .ui.segment
+        h2 Choose An Email 
+        = select_tag("email", options_from_collection_for_select(@emails, "id", "name"), class: "ui dropdown", id: "email_select")
+        #message_area
+      
+    .four.wide.column
+      .ui.segment
+        h2 Queue Messages
+        = submit_tag "Send Emails", class: "ui positive basic button", data: {confirm: "Are you sure you want to send emails to these recipients?"}      
+       

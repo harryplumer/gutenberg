@@ -12,4 +12,18 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery
+//= require emails
+//= require queues
 //= require_tree .
+
+$( document ).ready(function() {
+  $('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')
+    ;
+  })
+;
+})
