@@ -9,7 +9,7 @@ class ImportFilesController < ApplicationController
     end 
   end 
 
-  def new 
+  def new
     @import_file = ImportFile.new 
   end 
 
@@ -17,9 +17,11 @@ class ImportFilesController < ApplicationController
     @import_file = ImportFile.new(import_file_params)
     if @import_file.save 
       @import_file.process
-      redirect_to import_file_path(@import_file), notice: "Import file saved successfully"
+      flash[:success] = "Import file saved and processed successfully"
+      redirect_to import_file_path(@import_file)
     else 
-      redirect_to new_import_file_path, notice: "Save failed"
+      flash[:error] = @import_file.errors.full_messages.join("<br />")
+      redirect_to new_import_file_path
     end 
 
   end 

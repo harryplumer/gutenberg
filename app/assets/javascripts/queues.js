@@ -37,8 +37,11 @@ function simpleFormat(str) {
 }
 
 $( document ).ready(function() {
-  displayEmail()
-  displayList()
+  if($("#email_select").length)
+    displayEmail()
+  if($("#import_file_select").length) 
+    displayList()
+    
   $("#email_select").change(function(){
     displayEmail()
   })

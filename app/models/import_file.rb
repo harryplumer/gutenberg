@@ -5,6 +5,8 @@ class ImportFile < ApplicationRecord
   has_many :people_import_files
   has_many :people, through: :people_import_files
    
+  validates_presence_of :name
+  validates_uniqueness_of :name
 
   has_attached_file(
     :doc,
@@ -48,7 +50,7 @@ class ImportFile < ApplicationRecord
         if person.save
           PeopleImportFile.create(person: person, import_file: self, add_update: add_update)
         else 
-          #ERROR HANDLING GOES HERE
+          line_errors << {line: line, messages: person.errors.full_messages.join("<br>")}
         end 
 
       end 

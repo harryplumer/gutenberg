@@ -21,8 +21,8 @@ class EmailsController < ApplicationController
       flash[:success] = "New message successfully added!"
       redirect_to home_index_path
     else
-      flash[:alert] = "There was an error adding your email. Please try agian."
-      render partial: "form"
+      flash[:error] = @email.errors.full_messages.join("<br />")
+      render :new
     end
   end 
 
@@ -35,8 +35,8 @@ class EmailsController < ApplicationController
       flash[:success] = "Message successfully edited"
       redirect_to home_index_path
     else
-      flash[:alert] = "There was an error editing your email. Please try agian."
-      render partial: "form"
+      flash[:error] = @email.errors.full_messages.join("<br />")
+      render :edit
     end
   end 
 

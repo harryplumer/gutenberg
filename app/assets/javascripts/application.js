@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require emails
 //= require queues
@@ -20,9 +19,7 @@
 $( document ).ready(function() {
   $('.message .close')
   .on('click', function() {
-    $(this)
-      .closest('.message')
-      .transition('fade')
+    $(this).closest('.message').hide()
     ;
   })
 ;
