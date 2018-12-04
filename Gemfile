@@ -37,6 +37,7 @@ gem 'slim'
 gem 'semantic-ui-sass'
 gem "paperclip", "~> 6.0.0"
 gem 'jquery-rails'
+gem 'webpacker'
 
 
 group :development, :test do
