@@ -6,7 +6,7 @@ class ApplicationMailer < ActionMailer::Base
     person = Person.find(person_id)
     email = Email.find(email_id)
     @string = email.message
-    Person.column_names.each{|k| @string.gsub!("{{#{k}}}", person.send(k).to_s)}
+    Person.column_names.each{|k| @string.gsub!("{{#{k.titleize}}}", person.send(k).to_s)}
     mail(to: person.email_address, subject: email.subject)
     PeopleEmail.create(person: person, email: email)
   end 

@@ -44,8 +44,8 @@ class ImportFile < ApplicationRecord
         grad_year = h["gradyear"] if grad_year.nil? 
         grad_year = h["graduationyear"] if grad_year.nil?
 
-        person = Person.find_or_create_by(email_address: email_address)
-        add_update = person.id.present? ? "add" : "update"
+        person = Person.find_or_initialize_by(email_address: email_address)
+        add_update = person.id.present? ? "update" : "add"
         person.attributes = {first_name: first_name, last_name: last_name, email_address: email_address, team: team, yog: grad_year}
         if person.save
           PeopleImportFile.create(person: person, import_file: self, add_update: add_update)
