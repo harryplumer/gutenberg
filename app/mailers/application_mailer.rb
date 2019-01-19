@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'info@summithockeycamps.com'
+  default from: 'Summit Hockey Camps <info@summithockeycamps.com>'
   layout 'mailer'
 
   def send_message(person_id, email_id)
