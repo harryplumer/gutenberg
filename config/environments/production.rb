@@ -68,6 +68,7 @@ config.webpacker.check_yarn_integrity = false
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => 'gutenberg-summit.herokuapp.com' }
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.perform_deliveries = true
