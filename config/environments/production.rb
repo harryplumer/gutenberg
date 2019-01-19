@@ -76,9 +76,8 @@ config.webpacker.check_yarn_integrity = false
   ActionMailer::Base.smtp_settings = 
 {
 
-  :address            => 'summithockeycamps.com',
-  :port               => 465,
-  :domain             => 'summithockeycamps.com', #you can also use google.com
+  :address            => 'secureus9.sgcpanel.com',
+  :port               => 25,
   :authentication     => :plain,
   :user_name          => 'info@summithockeycamps.com',
   :password           => ENV['EMAIL_PASSWORD']
