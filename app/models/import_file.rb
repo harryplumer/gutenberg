@@ -31,9 +31,13 @@ class ImportFile < ApplicationRecord
         if first_name.nil? || last_name.nil?
           split = h["name"].split(" ") if h.keys.include?("name")
           split = h["fullname"].split(" ") if h.keys.include?("fullname")
-          first_name = split[0]
-          last_name = split[1]
+          if split.present?
+            first_name = split[0]
+            last_name = split[1]
+          end 
         end 
+
+        next unless first_name.present? && last_name.present?
 
         email_address = h["email"]
         email_address = h["emailaddress"] if email_address.nil?
